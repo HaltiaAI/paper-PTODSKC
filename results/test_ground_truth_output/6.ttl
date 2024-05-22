@@ -1,0 +1,9 @@
+@prefix : <https://know.dev/> .
+
+:Laura a :Person ;
+    :name "Laura";
+    :sex :Female .
+
+:Andres a :Person ;
+    :name "Andres";
+    :child :Laura .

@@ -1,0 +1,11 @@
+@prefix : <https://know.dev/> .
+
+:Murat a :Person ;
+    :name "Murat" ;
+    :sex :Male ;
+    :sister :Gulay .
+
+:Gulay a :Person ;
+    :name "Gulay" ;
+    :sex :Female ;
+    :brother :Murat .

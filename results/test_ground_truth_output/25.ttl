@@ -1,0 +1,9 @@
+@prefix : <https://know.dev/> .
+
+:Kaito a :Person ;
+    :name "Kaito" ;
+    :sibling :Haruto .
+
+:Haruto a :Person ;
+    :name "Haruto" ;
+    :sibling :Kaito .

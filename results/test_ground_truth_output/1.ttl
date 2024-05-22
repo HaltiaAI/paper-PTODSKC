@@ -1,0 +1,9 @@
+@prefix : <https://know.dev/> .
+
+:Sakura a :Person ;
+    :name "Sakura" ;
+    :sibling :Yui .
+
+:Yui a :Person ;
+    :name "Yui" ;
+    :sibling :Sakura .

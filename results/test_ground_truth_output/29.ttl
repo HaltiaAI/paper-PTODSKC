@@ -1,0 +1,11 @@
+@prefix : <https://know.dev/> .
+
+:Gulay a :Person ;
+    :name "Gulay" ;
+    :sex :Female ;
+    :sister :Seda .
+
+:Seda a :Person ;
+    :name "Seda" ;
+    :sex :Female ;
+    :sister :Gulay .

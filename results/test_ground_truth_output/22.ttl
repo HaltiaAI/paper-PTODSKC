@@ -1,0 +1,9 @@
+@prefix : <https://know.dev/> .
+
+:Rohan a :Person ;
+    :name "Rohan" ;
+    :partner :Riya .
+
+:Riya a :Person ;
+    :name "Riya" ;
+    :partner :Rohan .

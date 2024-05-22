@@ -1,0 +1,11 @@
+@prefix : <https://know.dev/> .
+
+:Ahmet a :Person ;
+    :name "Ahmet" ;
+    :sex :Male ;
+    :sister :Fatma .
+
+:Fatma a :Person ;
+    :name "Fatma" ;
+    :sex :Female ;
+    :brother :Ahmet .

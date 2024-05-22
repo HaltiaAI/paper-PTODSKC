@@ -1,0 +1,9 @@
+@prefix : <https://know.dev/> .
+
+:Max a :Person ;
+    :name "Max";
+    :sex :Male .
+
+:Martin a :Person ;
+    :name "Martin";
+    :child :Max .

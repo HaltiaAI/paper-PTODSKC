@@ -1,0 +1,11 @@
+@prefix : <https://know.dev/> .
+
+:Hakan a :Person ;
+    :name "Hakan" ;
+    :sex :Male ;
+    :brother :Cem .
+
+:Cem a :Person ;
+    :name "Cem" ;
+    :sex :Male ;
+    :brother :Hakan .

@@ -1,0 +1,11 @@
+@prefix : <https://know.dev/> .
+
+:Amelia a :Person ;
+    :name "Amelia";
+    :sex :Female ;
+    :child :Hannah .
+
+:Hannah a :Person ;
+    :name "Hannah";
+    :sex :Female ;
+    :mother :Amelia .

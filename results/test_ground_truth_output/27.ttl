@@ -1,0 +1,11 @@
+@prefix : <https://know.dev/> .
+
+:Zeynep a :Person ;
+    :name "Zeynep" ;
+    :sex :Female ;
+    :sister :Ayse .
+
+:Ayse a :Person ;
+    :name "Ayse" ;
+    :sex :Female ;
+    :sister :Zeynep .
