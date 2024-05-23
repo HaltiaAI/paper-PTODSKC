@@ -1,0 +1,125 @@
+@prefix : <https://know.dev/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+# Classes
+#################################################################
+:Person rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "Person"@en .
+
+:Male rdf:type owl:Class ;
+    rdfs:subClassOf :Sex ;
+    owl:disjointWith :Female ;
+    rdfs:label "Male"@en .
+
+:Female rdf:type owl:Class ;
+    rdfs:subClassOf :Sex ;
+    owl:disjointWith :Male ;
+    rdfs:label "Female"@en .
+
+:Sex rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    owl:equivalentClass [ rdf:type owl:Class ;
+            owl:unionOf ( :Female :Male ) ] .
+
+#################################################################
+# Object Properties
+#################################################################
+:sex rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Sex ;
+    rdfs:label "Sex"@en .
+
+:knows rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:label "Knows"@en .
+
+:parent rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :knows ;
+    owl:inverseOf :child ;
+    rdfs:label "Parent"@en .
+
+:father rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :parent ;
+    owl:equivalentClass  [
+        rdf:type        owl:Restriction ;
+        owl:onProperty  :sex ;
+        owl:hasValue    :Male
+    ] ;
+    rdfs:label "Father"@en .
+
+:mother rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :parent ;
+    owl:equivalentClass  [
+        rdf:type        owl:Restriction ;
+        owl:onProperty  :sex ;
+        owl:hasValue    :Female
+    ] ;
+    rdfs:label "Mother"@en .
+
+:sibling rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :knows ;
+    rdf:type owl:ReflexiveProperty ;
+    rdfs:label "Sibling"@en .
+
+:sister rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :sibling ;
+    owl:equivalentClass  [
+        rdf:type        owl:Restriction ;
+        owl:onProperty  :sex ;
+        owl:hasValue    :Female
+    ] ;
+    rdfs:label "Sister"@en .
+
+:brother rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :sibling ;
+    owl:equivalentClass  [
+        rdf:type        owl:Restriction ;
+        owl:onProperty  :sex ;
+        owl:hasValue    :Male
+    ] ;
+    rdfs:label "Brother"@en .
+
+:partner rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :knows ;
+    rdfs:label "Partner"@en .
+
+:spouse rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :partner ;
+    rdfs:label "Spouse"@en .
+
+:child rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :knows ;
+    owl:inverseOf :parent ;
+    rdfs:label "Child"@en .
+
+#################################################################
+# Data properties
+#################################################################
+:name rdf:type owl:DatatypeProperty ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:string ;
+  rdfs:label "Name"@en .
