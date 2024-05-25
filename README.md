@@ -71,3 +71,14 @@ pip install jinja2
 [mlx-community/Mistral-7B-Instruct-v0.2-4bit-mlx]: https://huggingface.co/mlx-community/Mistral-7B-Instruct-v0.2-4bit-mlx/tree/main
 
 ### Cite
+
+```bash
+@misc{coplu2024ontologydriven,
+      title={Prompt-{Time} {Ontology}-{Driven} {Symbolic} {Knowledge} {Capture} with {Large} {Language} {Models}},
+      author={Tolga Çöplü and Arto Bendiken and Andrii Skomorokhov and Eduard Bateiko and Stephen Cobb},
+      year={2024},
+      eprint={2405.14012},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+```
