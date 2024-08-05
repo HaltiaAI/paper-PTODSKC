@@ -1,6 +1,5 @@
 import json
 import os
-import re
 
 # Path to your JSONL file
 input_file_path = 'data/test.jsonl'
@@ -44,8 +43,6 @@ def format_and_generate_ttl(line, line_num):
     try:
         with open(output_file_path + str(line_num) + ".ttl" , 'w') as file:
             file.write(generated_output)
-    except FileNotFoundError:
-        print(f"Error: The file '{output_file_path}\{str(line_num)}' was not found.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
