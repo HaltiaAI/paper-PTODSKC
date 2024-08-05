@@ -30,7 +30,7 @@ def delete_files_in_directory(directory_path):
 
 def do_inference_and_log_result(model_path, prompt, results_file_path, adapter_file, line_num):
     # Construct the command to call the script with arguments
-    command = ['/usr/bin/python3', '-m','mlx_lm.lora', '--temp', '0', '-m', '500', '--model', model_path, '--adapter-file', adapter_file,'--prompt', prompt]
+    command = ['venv/bin/python3', '-m','mlx_lm.generate', '--temp', '0', '-m', '500', '--model', model_path, '--adapter-path', adapter_file,'--prompt', prompt]
 
     # Call the script and capture its output
     result = subprocess.run(command, capture_output=True, text=True)
@@ -53,12 +53,12 @@ def do_inference_and_log_result(model_path, prompt, results_file_path, adapter_f
         print(f"An error occurred: {e}")
 
 
-def main (model_file, prompt_base, test_file, results_file_path, adapter_file):
+def main (model_file, testset_path, results_file_path, adapter_file):
     # Clear all the output fiels under the resulsts path 
     delete_files_in_directory(results_file_path)
 
     prompt = None
-    with open(test_file, 'r') as testFile:
+    with open(testset_path, 'r') as testFile:
         line_num = 0
         for line in testFile:
             line_num += 1
@@ -72,12 +72,11 @@ def main (model_file, prompt_base, test_file, results_file_path, adapter_file):
             match = re.search(r'\[INST\](.*?)\[/INST\]', text, re.IGNORECASE)
             if match:
                 prompt = match.group(1).strip()
-                prompt_final = prompt_base + prompt + "[/INST]"
-                do_inference_and_log_result(model_file, prompt_final, results_file_path, adapter_file, line_num)
+                do_inference_and_log_result(model_file, prompt, results_file_path, adapter_file, line_num)
 
 if __name__ == "__main__":
-    if len(sys.argv) == 6:
-        main(sys.argv[1], sys.argv[2],sys.argv[3], sys.argv[4],sys.argv[5])
+    if len(sys.argv) == 5:
+        main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     else:
-        print("Fine-tuned benchmark requires 5 arguments.")
+        print("Fine-tuned benchmark requires 4 arguments.")
     sys.exit(0)
