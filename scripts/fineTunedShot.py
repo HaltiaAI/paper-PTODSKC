@@ -30,7 +30,7 @@ def delete_files_in_directory(directory_path):
 
 def do_inference_and_log_result(model_path, prompt, results_file_path, adapter_file, line_num):
     # Construct the command to call the script with arguments
-    command = ['venv/bin/python3', '-m','mlx_lm.generate', '--temp', '0', '-m', '500', '--model', model_path, '--adapter-path', adapter_file,'--prompt', prompt]
+    command = ['/usr/bin/env', 'python3', '-m','mlx_lm.generate', '--temp', '0', '-m', '500', '--model', model_path, '--adapter-path', adapter_file,'--prompt', prompt]
 
     # Call the script and capture its output
     result = subprocess.run(command, capture_output=True, text=True)
