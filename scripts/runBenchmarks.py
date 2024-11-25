@@ -20,7 +20,7 @@ if __name__ == "__main__":
     results_file_fineTuned_shot = 'results/test_evaluation_output/'
 
     # Run fine-tuned benchmark on model
-    command = ['venv/bin/python3', 'scripts/fineTunedShot.py', model_path, testset_path, results_file_fineTuned_shot, qlora_adapter_path]
+    command = ['/usr/bin/env', 'python3', 'scripts/fineTunedShot.py', model_path, testset_path, results_file_fineTuned_shot, qlora_adapter_path]
     result = subprocess.run(command, capture_output=True, text=True)
     if result.returncode != 0:
         print(f"Error in fine-tuning script execution: {result.stderr}")
