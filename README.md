@@ -46,14 +46,14 @@ Due to backward-incompatible changes made in the MLX framework, the current MLX 
 QLoRA adapter creation can be done with the following command. Please feel free to update the QLoRA training parameters:
 
 ```bash
-python3 -m mlx_lm.lora --train --model model/Mistral-7B-Instruct-v0.2-4bit-mlx --iters 600 --data ./data --batch-size 4 --lora-layers 16 --adapter-path adapters/adapters_b4_l16_i612_ts8sample_mistral_I_v02_4b.npz
+python3 -m mlx_lm.lora --train --model mlx-community/Mistral-7B-Instruct-v0.2-4bit-mlx --iters 600 --data ./data --batch-size 4 --lora-layers 16 --adapter-path adapters/adapters_b4_l16_i612_ts8sample_mistral_I_v02_4b.npz
 ```
 
 ### Running the benchmarks
 To be able to evaluate the generated adapter with the model please use the `runBenchmarks.py` script with `--model-path`, `--adapter-path`, and `--testset-path` arguments. This script calls `fineTunedShot.py`, reading input from `testset-path` and writing the results to the `results/test_evaluation_output/` directory.
 
 ```bash
-python3 scripts/runBenchmarks.py --model-path model/Mistral-7B-Instruct-v0.2-4bit-mlx --adapter-path adapters/adapters_b4_l16_i612_ts8sample_mistral_I_v02_4b.npz --testset-path data/test.jsonl
+python3 scripts/runBenchmarks.py --model-path mlx-community/Mistral-7B-Instruct-v0.2-4bit-mlx --adapter-path adapters/adapters_b4_l16_i612_ts8sample_mistral_I_v02_4b.npz --testset-path data/test.jsonl
 ```
 
 ### Evaluation
